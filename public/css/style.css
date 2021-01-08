@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
+* {
+    font-family: 'Kosugi Maru', sans-serif;
+}
+
+#pill-icon {
+    font-size: 40px;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    background-image: url("./../images/gear.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: 150px 150px;
+  }
