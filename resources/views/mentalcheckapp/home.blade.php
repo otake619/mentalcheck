@@ -33,9 +33,6 @@
                     <a class="nav-link" href="{{ route('home') }}">ホーム</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('log-show-day') }}">グラフ</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('calendar') }}">カレンダー</a>
                 </li>
                 <li class="nav-item">

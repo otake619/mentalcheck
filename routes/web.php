@@ -20,7 +20,7 @@ Route::get('/', [LogController::class, 'get_home'])->name('home');
 Route::post('/', [LogController::class, 'home_post'])->name('home-post');
 
 Route::post('/comment/{searchDay}', [LogController::class, 'get_comment']);
-Route::get('/comment/{searchDay}', [LogController::class, 'get_comment']);
+Route::get('/comment/{searchDay}', [LogController::class, 'get_logs']);
 
 Route::get('/calendar', [LogController::class, 'get_calendar'])->name('calendar');
 Route::post('/calendar/{sendDay}', [LogController::class, 'get_calendar']);

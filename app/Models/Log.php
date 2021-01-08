@@ -116,4 +116,14 @@ class Log extends Model
         $this->comment = $comment;
         $this->save();
     }
+
+    public function get_logs(int $user_id, string $search_day)
+    {
+        $search_day = new Carbon($search_day);
+        $logs = Log::whereDate('created_at', $search_day)
+        ->where('user_id', '=', $user_id)
+        ->orderBy('created_at', 'asc')
+        ->get();
+        return $logs;
+    }
 }

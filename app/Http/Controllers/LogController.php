@@ -133,4 +133,12 @@ class LogController extends Controller
         $logs = $this->log->store($user_id, $mental_point, $medicine_check, $comment);
         return view('mentalcheckapp.home', compact('is_posted'));
     }
+
+    public function get_logs($searchDay)
+    {
+        //TODO: 後で必ず調整
+        $user_id = 1;
+        $logs = $this->log->get_logs($user_id, $searchDay);
+        return view('mentalcheckapp.logs', compact('logs', 'searchDay'));
+    }
 }
