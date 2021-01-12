@@ -124,13 +124,62 @@ class LogController extends Controller
     //1年単位でのグラフの表示
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'mental_point' => 'required|digits_between:1,5',
+            'medicine_check' => 'required',
+            'comment' => 'required|max:200',
+        ]);
+
         $is_posted = 1;
         //後で必ず変更
         $user_id = 1;
-        $mental_point = $request->input('mental_check');
+        $mental_point = $request->input('mental_point');
         $medicine_check = $request->input('medicine_check');
         $comment = $request->input('comment');
         $logs = $this->log->store($user_id, $mental_point, $medicine_check, $comment);
         return view('mentalcheckapp.home', compact('is_posted'));
+    }
+
+    public function update(Request $request)
+    {
+        $validated = $request->validate([
+            'mental_point' => 'required|digits_between:1,5',
+            'medicine_check' => 'required',
+            'comment' => 'required|max:200',
+        ]);
+
+        $is_posted = 1;
+        //後で必ず変更
+        $user_id = 1;
+        $mental_point = $request->input('mental_point');
+        $medicine_check = $request->input('medicine_check');
+        $comment = $request->input('comment');
+        $day = $request->input('day');
+        $created_at = $request->input('created_at');
+        $logs = $this->log->update_log($user_id, $mental_point, $medicine_check, $comment, $created_at);
+        return redirect()->route('get-logs', ['searchDay' => $day])->with('is_posted', 1);
+    }
+
+    public function get_logs($searchDay)
+    {
+        if(preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $searchDay)){
+             //TODO: 後で必ず調整
+            $user_id = 1;
+            $logs = $this->log->get_logs($user_id, $searchDay);
+            return view('mentalcheckapp.logs', compact('logs', 'searchDay'));
+        } else {
+            return redirect('/calendar');
+        }
+    }
+    //$created_atで指定された時間のレコードを取得して返す
+    public function ajax_info(Request $request)
+    {
+        $data = $request->all();
+        $created_at = $data['created_at'];
+        $user_id = 1;
+        $log_info = $this->log->get_info($user_id, $created_at);
+        return response()->json([
+            'log_info' => $log_info,
+        ]);
     }
 }

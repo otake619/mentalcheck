@@ -34,9 +34,6 @@
                     <a class="nav-link" href="{{ route('home') }}">ホーム</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('log-show-day') }}">グラフ</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('calendar') }}">カレンダー</a>
                 </li>
                 <li class="nav-item">
@@ -82,7 +79,7 @@
             for(let index=0;index<dateArray.length;index++){
                 calendar.addEvent({
                     id: index,
-                    title: "服薬あり",
+                    title: "記録あり",
                     start: dateArray[index],
                 });
             }

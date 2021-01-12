@@ -20,23 +20,20 @@ Route::get('/', [LogController::class, 'get_home'])->name('home');
 Route::post('/', [LogController::class, 'home_post'])->name('home-post');
 
 Route::post('/comment/{searchDay}', [LogController::class, 'get_comment']);
-Route::get('/comment/{searchDay}', [LogController::class, 'get_comment']);
+Route::get('/comment/{searchDay}', [LogController::class, 'get_logs'])->name('get-logs');
 
 Route::get('/calendar', [LogController::class, 'get_calendar'])->name('calendar');
-Route::post('/calendar/{sendDay}', [LogController::class, 'get_calendar']);
+// Route::post('/calendar/{sendDay}', [LogController::class, 'get_calendar']);
 
 Route::prefix('log')->group(function(){
-    //精神状態をデータベースに保存
-    Route::post('store-mental', [LogController::class, 'store_mental'])->name('log-mental');
-    //服薬状況をデータベースに保存
-    Route::post('store-medicine', [LogController::class, 'store_medicine'])->name('log-medicine');
-    //不調理由をデータベースに保存
-    Route::post('store-comment', [LogController::class, 'store_comment'])->name('log-comment');
-
-
-
     //不調理由をデータベースに保存
     Route::post('store', [LogController::class, 'store'])->name('store');
+    //不調理由をデータベースに保存
+    Route::get('store', [LogController::class, 'store'])->name('store');
+    //ログを編集・更新
+    Route::post('update', [LogController::class, 'update'])->name('update');
+    //ログを編集・更新
+    Route::post('ajax-info', [LogController::class, 'ajax_info'])->name('ajax-info');
 });
 
 Route::prefix('graph')->group(function(){

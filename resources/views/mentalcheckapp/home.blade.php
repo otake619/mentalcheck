@@ -33,9 +33,6 @@
                     <a class="nav-link" href="{{ route('home') }}">ホーム</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('log-show-day') }}">グラフ</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('calendar') }}">カレンダー</a>
                 </li>
                 <li class="nav-item">
@@ -61,10 +58,19 @@
                         <div class="menu text-center bg-info pt-4 pb-4">
                             <form action="{{ route('store') }}" method="POST">
                                 @csrf
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <h4 class="text-white">今の精神状態をチェック！(5段階で値が高いほど調子が良い)</h4>
                                 <label for="range" class="form-label text-white" id="display-range"></label>
                                 <div class="range text-center">
-                                    <input type="range" class="custom-range w-50" min="1" max="5" step="1" id="range" name="mental_check" />
+                                    <input type="range" class="custom-range w-50" min="1" max="5" step="1" id="range" name="mental_point" />
                                 </div>
                                 <hr>
                                 <h4 class="text-white pt-4">薬を決められた時間に服用できたかチェック！</h4>
@@ -76,7 +82,7 @@
                                 <hr>
                                 <h4 class="text-white">不調の具体的な原因をチェック！</h4>
                                 <div class="text-area text-center">
-                                    <textarea class="form-control w-50 mr-auto ml-auto" id="text-area" rows="3" name="comment" required></textarea>
+                                    <textarea class="form-control w-50 mr-auto ml-auto" id="text-area" rows="3" name="comment" required placeholder="200文字以内でお願いします"></textarea>
                                 </div>
                                 <div class="submit text-center mt-3 pb-3">
                                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="送信">
@@ -93,7 +99,7 @@
         <h4 class="text-center">*広告を貼るスペース</h4>
     </section> --}}
     {{-- コピーライト --}}
-    <section class="copyright-space bg-info mt-5">
+    <section class="copyright-space bg-info mt-5 fixed-bottom">
         <div class="copy-right text-center text-white pb-5 pt-3">
             <h4>メンタルチェックアプリ</h4>
             <small>&copy;otake619 All Rights Reserved.</small>

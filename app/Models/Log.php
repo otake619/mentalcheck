@@ -116,4 +116,46 @@ class Log extends Model
         $this->comment = $comment;
         $this->save();
     }
+
+    public function update_log(int $user_id, int $mental_point, bool $medicine_check, string $comment, string $created_at)
+    {
+        // $created_at = date('Y-m-d H:i:s', strtotime($created_at));
+        // Log::where('user_id', $user_id)
+        // ->where('created_at', $created_at)
+        // ->update([
+        //     'mental_point' => $mental_point,
+        //     'medicine_check' => $medicine_check,
+        //     'comment' => $comment,
+        //     'updated_at' => date('Y-m-d H:i:s')
+        // ]);
+        // $created_at = Date('Y-m-d H:i:s', strtotime($created_at));
+        // $created_at = $created_at->format('Y-m-d H:i:s');
+        $log = Log::where('user_id', $user_id)
+        ->where('created_at',"$created_at")
+        ->first();
+        $log->mental_point = $mental_point;
+        $log->medicine_check = $medicine_check;
+        $log->comment = $comment;
+        $log->updated_at = date('Y-m-d H:i:s');
+        $log->save();
+    }
+
+    public function get_logs(int $user_id, string $search_day)
+    {
+        $search_day = new Carbon($search_day);
+        $logs = Log::whereDate('created_at', $search_day)
+        ->where('user_id', '=', $user_id)
+        ->orderBy('created_at', 'asc')
+        ->get();
+        return $logs;
+    }
+
+    public function get_info(int $user_id, string $created_at)
+    {
+        $created_at_tmp = new Carbon($created_at);
+        $log_info = Log::where('created_at', $created_at_tmp)
+        ->where('user_id', $user_id)
+        ->get();
+        return $log_info;
+    }
 }
