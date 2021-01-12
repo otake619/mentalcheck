@@ -82,7 +82,7 @@
                                 <hr>
                                 <h4 class="text-white">不調の具体的な原因をチェック！</h4>
                                 <div class="text-area text-center">
-                                    <textarea class="form-control w-50 mr-auto ml-auto" id="text-area" rows="3" name="comment" required></textarea>
+                                    <textarea class="form-control w-50 mr-auto ml-auto" id="text-area" rows="3" name="comment" required placeholder="200文字以内でお願いします"></textarea>
                                 </div>
                                 <div class="submit text-center mt-3 pb-3">
                                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="送信">
