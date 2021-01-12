@@ -80,22 +80,22 @@
                                     <p id="created_at"></p>
                                     <form action="{{ route('update') }}" method="POST">
                                         @csrf
-                                        <h4 class="text-white">精神状態</h4>
-                                        <label for="range" class="form-label text-white" id="display-range"></label>
+                                        <h4>精神状態</h4>
+                                        <label for="range" class="form-label" id="display-range"></label>
                                         <div class="range text-center">
                                             <input type="range" class="custom-range w-50" min="1" max="5" step="1" id="mental_point" name="mental_point" />
                                             <input type="hidden" name="day" value="{{ $searchDay }}">
                                             <input type="hidden" name="created_at" id="time">
                                         </div>
                                         <hr>
-                                        <h4 class="text-white pt-4">服薬チェック</h4>
+                                        <h4 class="pt-4">服薬チェック</h4>
                                         <div class="form-check text-center pb-4">
                                             <input type="hidden" value="0" name="medicine_check">
                                             <input type="checkbox" class="form-check-input" id="checkbox" name="medicine_check">
                                             <label for="checkbox" class="form-check-label text-white">決められた時間に服用した</label>
                                         </div>
                                         <hr>
-                                        <h4 class="text-white">不調の原因</h4>
+                                        <h4 class="">不調の原因</h4>
                                         <div class="text-area text-center">
                                             <textarea class="form-control w-50 mr-auto ml-auto" id="comment" rows="3" name="comment" required placeholder="200文字以内でお願いします"></textarea>
                                         </div>
