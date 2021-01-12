@@ -16,9 +16,9 @@ class CreateLogsTable extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('mental_point')->nullable();
-            $table->boolean('medicine_check')->nullable();
-            $table->string('comment')->nullable();
+            $table->integer('mental_point');
+            $table->boolean('medicine_check');
+            $table->string('comment');
             $table->timestamps();
         });
     }

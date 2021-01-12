@@ -69,7 +69,7 @@
                     <h4 class="mt-3 mb-3">不調の具体的な内容</h4>
                     @foreach ($logs as $log)
                         @if (isset($log->comment))
-                            <div class="log pr-5 pl-5 shadow rounded">
+                            <div class="log pr-5 pl-5 shadow rounded text-wrap">
                                 <div class="log-content">
                                     <p>{{ $log->created_at }}</p>
                                     <hr>
