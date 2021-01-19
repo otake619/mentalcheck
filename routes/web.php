@@ -27,7 +27,7 @@ Route::get('/calendar', [LogController::class, 'get_calendar'])->name('calendar'
 
 Route::prefix('log')->group(function(){
     //不調理由をデータベースに保存
-    Route::post('store', [LogController::class, 'store'])->name('store');
+    Route::post('store', [LogController::class, 'store'])->name('store-data');
     //不調理由をデータベースに保存
     Route::get('store', [LogController::class, 'store'])->name('store');
     //ログを編集・更新
@@ -48,3 +48,7 @@ Route::prefix('graph')->group(function(){
     //グラフ画面でログを図式化して表示(1年)
     Route::get('show-year', [LogController::class, 'show_year'])->name('log-show-year');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

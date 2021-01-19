@@ -56,7 +56,7 @@
                             <h4 class="text-white pt-2">メンタルチェック</h4>
                         </div>
                         <div class="menu text-center bg-info pt-4 pb-4">
-                            <form action="{{ route('store') }}" method="POST">
+                            <form action="{{ route('store-data') }}" method="POST">
                                 @csrf
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
