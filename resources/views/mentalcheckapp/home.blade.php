@@ -50,7 +50,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="mentalcheck shadow mt-5">
+                    <div class="mentalcheck shadow mt-5 mb-5">
                         <div class="form-title bg-primary d-flex">
                             <i class="far fa-heart bg-light text-danger h1 mb-0" id="heart-icon"></i>
                             <h4 class="text-white pt-2">メンタルチェック</h4>
@@ -99,7 +99,7 @@
         <h4 class="text-center">*広告を貼るスペース</h4>
     </section> --}}
     {{-- コピーライト --}}
-    <section class="copyright-space bg-info mt-5 fixed-bottom">
+    <section class="copyright-space bg-info mt-5">
         <div class="copy-right text-center text-white pb-5 pt-3">
             <h4>メンタルチェックアプリ</h4>
             <small>&copy;otake619 All Rights Reserved.</small>

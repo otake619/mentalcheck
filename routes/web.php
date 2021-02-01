@@ -15,10 +15,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', [LogController::class, 'get_home'])->name('home');
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [LogController::class, 'get_home'])->name('home');
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
 Route::post('/', [LogController::class, 'home_post'])->name('home-post');
 
@@ -39,10 +39,10 @@ Route::prefix('log')->group(function(){
     Route::post('ajax-info', [LogController::class, 'ajax_info'])->name('ajax-info');
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    [UserController::class, 'login'];
+})->name('dashboard');
+
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
