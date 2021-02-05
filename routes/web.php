@@ -16,6 +16,9 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [LogController::class, 'get_home'])->name('home');
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
 Route::post('/', [LogController::class, 'home_post'])->name('home-post');
 
@@ -27,7 +30,7 @@ Route::get('/calendar', [LogController::class, 'get_calendar'])->name('calendar'
 
 Route::prefix('log')->group(function(){
     //不調理由をデータベースに保存
-    Route::post('store', [LogController::class, 'store'])->name('store');
+    Route::post('store', [LogController::class, 'store'])->name('store-data');
     //不調理由をデータベースに保存
     Route::get('store', [LogController::class, 'store'])->name('store');
     //ログを編集・更新
@@ -36,15 +39,16 @@ Route::prefix('log')->group(function(){
     Route::post('ajax-info', [LogController::class, 'ajax_info'])->name('ajax-info');
 });
 
-Route::prefix('graph')->group(function(){
-    //グラフ画面でログを図式化して表示(24時間)
-    Route::get('show-day', [LogController::class, 'show_day'])->name('log-show-day');
-    //ajaxを使用して24時間を超えた範囲のグラフを表示
-    Route::get('show-day/ajax-get-logs/{displayTime}', [LogController::class, 'ajax_get_logs'])->name('ajax-get-logs');
-    //グラフ画面でログを図式化して表示(1週間)
-    Route::get('show-week', [LogController::class, 'show_week'])->name('log-show-week');
-    //グラフ画面でログを図式化して表示(1ヵ月)
-    Route::get('show-month', [LogController::class, 'show_month'])->name('log-show-month');
-    //グラフ画面でログを図式化して表示(1年)
-    Route::get('show-year', [LogController::class, 'show_year'])->name('log-show-year');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    [UserController::class, 'login'];
+})->name('dashboard');
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+Route::prefix('user')->group(function(){
+    //ログアウト画面に遷移
+    Route::get('get-logout', [UserController::class, 'get_logout'])->name('get-logout');
+    //ログアウト処理
+    Route::get('logout', [UserController::class, 'logout'])->name('logout');
 });

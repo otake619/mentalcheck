@@ -36,7 +36,7 @@
                     <a class="nav-link" href="{{ route('calendar') }}">カレンダー</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">ログアウト</a>
+                    <a class="nav-link" href="{{ route('get-logout') }}">ログアウト</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link">アカウント情報</a>
@@ -50,13 +50,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="mentalcheck shadow mt-5">
+                    <div class="mentalcheck shadow mt-5 mb-5">
                         <div class="form-title bg-primary d-flex">
                             <i class="far fa-heart bg-light text-danger h1 mb-0" id="heart-icon"></i>
                             <h4 class="text-white pt-2">メンタルチェック</h4>
                         </div>
                         <div class="menu text-center bg-info pt-4 pb-4">
-                            <form action="{{ route('store') }}" method="POST">
+                            <form action="{{ route('store-data') }}" method="POST">
                                 @csrf
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -99,7 +99,7 @@
         <h4 class="text-center">*広告を貼るスペース</h4>
     </section> --}}
     {{-- コピーライト --}}
-    <section class="copyright-space bg-info mt-5 fixed-bottom">
+    <section class="copyright-space bg-info mt-5">
         <div class="copy-right text-center text-white pb-5 pt-3">
             <h4>メンタルチェックアプリ</h4>
             <small>&copy;otake619 All Rights Reserved.</small>

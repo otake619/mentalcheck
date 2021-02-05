@@ -39,7 +39,7 @@
                     <a class="nav-link" href="{{ route('calendar') }}">カレンダー</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">ログアウト</a>
+                    <a class="nav-link" href="{{ route('get-logout') }}">ログアウト</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link">アカウント情報</a>
