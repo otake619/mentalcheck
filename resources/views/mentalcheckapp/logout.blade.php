@@ -13,7 +13,7 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>ホーム mentalcheckapp</title>
+    <title>ログアウト mentalcheckapp</title>
 </head>
 <body>
     <!--Navbar-->
@@ -49,46 +49,11 @@
     <section class="form">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <div class="mentalcheck shadow mt-5 mb-5">
-                        <div class="form-title bg-primary d-flex">
-                            <i class="far fa-heart bg-light text-danger h1 mb-0" id="heart-icon"></i>
-                            <h4 class="text-white pt-2">メンタルチェック</h4>
-                        </div>
-                        <div class="menu text-center bg-info pt-4 pb-4">
-                            <form action="{{ route('store-data') }}" method="POST">
-                                @csrf
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <h4 class="text-white">今の精神状態をチェック！(5段階で値が高いほど調子が良い)</h4>
-                                <label for="range" class="form-label text-white" id="display-range"></label>
-                                <div class="range text-center">
-                                    <input type="range" class="custom-range w-50" min="1" max="5" step="1" id="range" name="mental_point" />
-                                </div>
-                                <hr>
-                                <h4 class="text-white pt-4">薬を決められた時間に服用できたかチェック！</h4>
-                                <div class="form-check text-center pb-4">
-                                    <input type="hidden" value="0" name="medicine_check">
-                                    <input type="checkbox" class="form-check-input" id="checkbox" name="medicine_check">
-                                    <label for="checkbox" class="form-check-label text-white">決められた時間に服用した</label>
-                                </div>
-                                <hr>
-                                <h4 class="text-white">不調の具体的な原因をチェック！</h4>
-                                <div class="text-area text-center">
-                                    <textarea class="form-control w-50 mr-auto ml-auto" id="text-area" rows="3" name="comment" required placeholder="200文字以内でお願いします"></textarea>
-                                </div>
-                                <div class="submit text-center mt-3 pb-3">
-                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="送信">
-                                </div>
-                            </form>
-                        </div>
+                <div class="col-12 mt-4 text-center">
+                    <h4>ログアウトしますか？</h4>
+                    <div class="logout-form mt-4 text-center">
+                        <a href="{{ route('logout') }}" class="btn btn-primary">ログアウトする</a>
+                        <a href="{{ route('home') }}" class="btn btn-secondary">ログアウトしない</a>
                     </div>
                 </div>
             </div>
@@ -99,7 +64,7 @@
         <h4 class="text-center">*広告を貼るスペース</h4>
     </section> --}}
     {{-- コピーライト --}}
-    <section class="copyright-space bg-info mt-5">
+    <section class="copyright-space bg-info mt-5 fixed-bottom">
         <div class="copy-right text-center text-white pb-5 pt-3">
             <h4>メンタルチェックアプリ</h4>
             <small>&copy;otake619 All Rights Reserved.</small>
@@ -116,19 +81,6 @@
     <!-- Toartr -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript">
-
-        $(function(){
-            $("#range").click(function() {
-                let rangeValue = $("#range").val();
-                $("#display-range").text("現在の精神状態:" + rangeValue);
-            });
-        });
-
-        let is_posted = @json($is_posted);
-        if(is_posted == 1){
-            toastr.success("体調の記録が完了しました。", "お知らせ");
-        }
-        console.log(is_posted);
     </script>
 </body>
 </html>

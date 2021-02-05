@@ -46,3 +46,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
+Route::prefix('user')->group(function(){
+    //ログアウト画面に遷移
+    Route::get('get-logout', [UserController::class, 'get_logout'])->name('get-logout');
+    //ログアウト処理
+    Route::get('logout', [UserController::class, 'logout'])->name('logout');
+});
