@@ -58,4 +58,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function get_info(int $user_id)
+    {
+        $user_info = User::where('id', $user_id)->get();
+        return $user_info;
+    }
 }

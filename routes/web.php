@@ -4,17 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', [LogController::class, 'get_home'])->name('home');
 // Route::get('/', function () {
 //     return view('auth.login');
@@ -52,11 +41,11 @@ Route::prefix('user')->group(function(){
     //ログアウト処理
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
     //アカウント情報を表示
-    Route::get('account-info', [UserController::class, 'account_info'])->name('account-info');
+    Route::get('account-info', [UserController::class, 'get_account_info'])->name('account-info');
     //アカウント削除画面を表示
     Route::get('get-delete', [UserController::class, 'get_delete'])->name('get-delete');
     //アカウントを更新
-    Route::post('update', [UserController::class, 'update'])->name('update');
+    Route::post('update', [UserController::class, 'update'])->name('update-account');
     //アカウントを削除
-    Route::post('delete', [UserController::class, 'delete'])->name('delete');
+    Route::post('delete', [UserController::class, 'delete'])->name('delete-account');
 });

@@ -39,7 +39,7 @@
                     <a class="nav-link" href="{{ route('get-logout') }}">ログアウト</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">アカウント情報</a>
+                    <a class="nav-link" href="{{ route('account-info') }}">アカウント情報</a>
                 </li>
             </ul>
         </div>

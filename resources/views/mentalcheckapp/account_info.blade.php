@@ -13,7 +13,7 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>ログアウト mentalcheckapp</title>
+    <title>アカウント情報 mentalcheckapp</title>
 </head>
 <body>
     <!--Navbar-->
@@ -49,11 +49,12 @@
     <section class="form">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 mt-4 text-center">
-                    <h4>ログアウトしますか？</h4>
-                    <div class="logout-form mt-4 text-center">
-                        <a href="{{ route('logout') }}" class="btn btn-primary">ログアウトする</a>
-                        <a href="{{ route('home') }}" class="btn btn-secondary">ログアウトしない</a>
+                <div class="col-12">
+                    <dd>{{ $user_info }}</dd>
+                    <div class="user-profile">
+                        <form action="">
+                            
+                        </form>
                     </div>
                 </div>
             </div>

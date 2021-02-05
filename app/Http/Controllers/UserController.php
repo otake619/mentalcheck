@@ -26,6 +26,14 @@ class UserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return view('auth.login');
+        return redirect('/');
+    }
+
+    //ユーザー情報を取得して、登録情報画面を返す
+    public function get_account_info()
+    {
+        $user_id = Auth::id();
+        $user_info = $this->user->get_info($user_id);
+        return view('mentalcheckapp.account_info', compact('user_info'));
     }
 }
