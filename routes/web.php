@@ -51,4 +51,12 @@ Route::prefix('user')->group(function(){
     Route::get('get-logout', [UserController::class, 'get_logout'])->name('get-logout');
     //ログアウト処理
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
+    //アカウント情報を表示
+    Route::get('account-info', [UserController::class, 'account_info'])->name('account-info');
+    //アカウント削除画面を表示
+    Route::get('get-delete', [UserController::class, 'get_delete'])->name('get-delete');
+    //アカウントを更新
+    Route::post('update', [UserController::class, 'update'])->name('update');
+    //アカウントを削除
+    Route::post('delete', [UserController::class, 'delete'])->name('delete');
 });
