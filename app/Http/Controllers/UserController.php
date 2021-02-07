@@ -34,6 +34,8 @@ class UserController extends Controller
     {
         $user_id = Auth::id();
         $user_info = $this->user->get_info($user_id);
-        return view('mentalcheckapp.account_info', compact('user_info'));
+        $is_posted = 0;
+        return view('mentalcheckapp.account_info', 
+            compact('user_info', 'is_posted'));
     }
 }

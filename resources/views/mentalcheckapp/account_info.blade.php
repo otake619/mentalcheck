@@ -52,8 +52,10 @@
                 <div class="col-12">
                     <dd>{{ $user_info }}</dd>
                     <div class="user-profile">
-                        <form action="">
-                            
+                        <form action="" method="POST">
+                            @csrf
+                            <input type="text" name="name" value="{{ $user_info }}">
+                            <dd>{{ $user_info->pluck('name') }}</dd>
                         </form>
                     </div>
                 </div>
@@ -82,6 +84,10 @@
     <!-- Toartr -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript">
+        let is_posted = @json($is_posted);
+        if(is_posted == 1){
+            toastr.success("アカウント情報の更新が完了しました。", "お知らせ");
+        }
     </script>
 </body>
 </html>
