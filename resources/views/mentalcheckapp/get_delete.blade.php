@@ -13,7 +13,7 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>ログアウト mentalcheckapp</title>
+    <title>退会フォーム mentalcheckapp</title>
 </head>
 <body>
     <!--Navbar-->
@@ -41,6 +41,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('account-info') }}">アカウント情報</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('get-delete') }}">退会</a>
+                </li>
             </ul>
         </div>
         <!-- Collapsible content -->
@@ -49,11 +52,26 @@
     <section class="form">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 mt-4 text-center">
-                    <h4>ログアウトしますか？</h4>
-                    <div class="logout-form mt-4 text-center">
-                        <a href="{{ route('logout') }}" class="btn btn-primary">ログアウトする</a>
-                        <a href="{{ route('home') }}" class="btn btn-secondary">ログアウトしない</a>
+                <div class="col-12">
+                    <div class="user-profile text-center mt-5 shadow">
+                        <form action="{{ route('update-account') }}" method="POST">
+                            @csrf
+                            @foreach ($user_info as $item)
+                                <div class="form-outline">
+                                    <h4 class="pt-5">アカウント名</h4>
+                                    <input type="text" id="formControlLg" class="form-control form-control-lg" name="name" value="{{ $item->name }}"/>
+                                </div>
+                                <br>
+                                <h4>Email</h4>
+                                <h4>{{ $item->email }}</h4>
+                                <br>
+                                <h4>アカウント作成日</h4>
+                                <h4>{{ $item->created_at->diffForHumans() }}</h4>
+                                <p class="mt-4 mb-4">*Emailは書き換え出来ません</p>
+                                <input type="submit" class="btn btn-primary" value="更新する">
+                                <input type="button" class="btn btn-secondary" value="キャンセル">
+                            @endforeach
+                        </form>
                     </div>
                 </div>
             </div>
@@ -64,7 +82,7 @@
         <h4 class="text-center">*広告を貼るスペース</h4>
     </section> --}}
     {{-- コピーライト --}}
-    <section class="copyright-space bg-info mt-5 fixed-bottom">
+    <section class="copyright-space bg-info mt-5">
         <div class="copy-right text-center text-white pb-5 pt-3">
             <h4>メンタルチェックアプリ</h4>
             <small>&copy;otake619 All Rights Reserved.</small>

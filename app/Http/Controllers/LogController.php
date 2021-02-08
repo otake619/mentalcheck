@@ -138,6 +138,7 @@ class LogController extends Controller
         $medicine_check = $request->input('medicine_check');
         $comment = $request->input('comment');
         $logs = $this->log->store($user_id, $mental_point, $medicine_check, $comment);
+        $request->session()->regenerateToken();
         return view('mentalcheckapp.home', compact('is_posted'));
     }
 
@@ -158,6 +159,7 @@ class LogController extends Controller
         $day = $request->input('day');
         $created_at = $request->input('created_at');
         $logs = $this->log->update_log($user_id, $mental_point, $medicine_check, $comment, $created_at);
+        $request->session()->regenerateToken();
         return redirect()->route('get-logs', ['searchDay' => $day])->with('is_posted', 1);
     }
 
