@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -63,5 +64,13 @@ class User extends Authenticatable
     {
         $user_info = User::where('id', $user_id)->get();
         return $user_info;
+    }
+
+    public function update_info(string $user_name)
+    {
+        $user_id = Auth::id();
+        $user = User::find($user_id);
+        $user->name = $user_name;
+        $user->save();
     }
 }

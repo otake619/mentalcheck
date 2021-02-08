@@ -38,4 +38,16 @@ class UserController extends Controller
         return view('mentalcheckapp.account_info', 
             compact('user_info', 'is_posted'));
     }
+
+    //ユーザー情報をアップデート
+    public function update(Request $request)
+    {
+        $user_name = $request->input('name');
+        $update_info = $this->user->update_info($user_name);
+        $is_posted = 1;
+        $user_info = $this->user->get_info(Auth::id());
+        $request->session()->regenerateToken();
+        return view('mentalcheckapp.account_info',
+            compact('user_info', 'is_posted'));
+    }
 }
