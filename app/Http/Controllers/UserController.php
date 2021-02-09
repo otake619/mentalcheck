@@ -50,4 +50,9 @@ class UserController extends Controller
         return view('mentalcheckapp.account_info',
             compact('user_info', 'is_posted'));
     }
+
+    public function get_delete()
+    {
+        return view('mentalcheckapp.delete_form');
+    }
 }
