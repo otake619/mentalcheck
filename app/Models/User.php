@@ -73,4 +73,9 @@ class User extends Authenticatable
         $user->name = $user_name;
         $user->save();
     }
+
+    public function delete_account()
+    {
+        $delete_account = User::where('id', Auth::id())->delete();
+    }
 }

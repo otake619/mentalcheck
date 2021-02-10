@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', [LogController::class, 'get_home'])->name('home');
+Route::get('/', [LogController::class, 'get_home'])->name('home')->middleware('auth');
 // Route::get('/', function () {
 //     return view('auth.login');
 // });
@@ -47,5 +47,9 @@ Route::prefix('user')->group(function(){
     //アカウントを更新
     Route::post('update', [UserController::class, 'update'])->name('update-account');
     //アカウントを削除
-    Route::post('delete', [UserController::class, 'delete'])->name('delete-account');
+    Route::post('delete-account', [UserController::class, 'delete_account'])->name('delete-account');
+    //アカウント削除後
+    Route::get('done-delete', function(){
+        view('mentalcheckapp.done_delete');
+    });
 });
