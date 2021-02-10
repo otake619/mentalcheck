@@ -12,7 +12,6 @@ class LogController extends Controller
 
     public function __construct(Log $log)
     {
-        $this->middleware('auth');
         $this->log = $log;
     }
 

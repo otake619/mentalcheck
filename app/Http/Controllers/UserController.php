@@ -55,4 +55,20 @@ class UserController extends Controller
     {
         return view('mentalcheckapp.delete_form');
     }
+
+    public function delete_account(Request $request)
+    {
+        $email = $request->input('email');
+        if($email === Auth::user()->email){
+            //入力したメールアドレスが合っていて、退会処理を実行する
+            //退会処理を行った後、ログアウト→退会後画面へリダイレクトする
+            $delete_account = $this->user->delete_account();
+            Auth::logout();
+            return redirect('/');
+        } else {
+            //入力したメールアドレスが間違っていた場合
+            //TODO バリデーションを行う
+            return view('mentalcheckapp.delete_form');
+        }
+    }
 }
