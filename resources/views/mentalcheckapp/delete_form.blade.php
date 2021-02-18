@@ -56,6 +56,11 @@
                     <div class="delete-form text-center mt-5">
                         <h4>退会する場合は、以下のボタンをクリックして</h4>
                         <h4>ご登録のemailアドレスをご入力の上、退会ボタンを押してください。</h4>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                         <!-- Button trigger modal -->
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#exampleModal">
