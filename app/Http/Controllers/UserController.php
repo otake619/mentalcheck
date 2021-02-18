@@ -42,6 +42,10 @@ class UserController extends Controller
     //ユーザー情報をアップデート
     public function update(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
         $user_name = $request->input('name');
         $update_info = $this->user->update_info($user_name);
         $is_posted = 1;
@@ -58,6 +62,10 @@ class UserController extends Controller
 
     public function delete_account(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
         $email = $request->input('email');
         if($email === Auth::user()->email){
             //入力したメールアドレスが合っていて、退会処理を実行する

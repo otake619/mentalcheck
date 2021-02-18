@@ -21,3 +21,8 @@
     background-position: center center;
     background-size: 150px 150px;
   }
+
+  ul {
+      list-style: none;
+  }
+

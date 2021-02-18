@@ -59,6 +59,16 @@
                             @foreach ($user_info as $item)
                                 <div class="form-outline">
                                     <h4 class="pt-5">アカウント名</h4>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    <p>*アカウント名は255文字以内でお願いします。</p>
                                     <input type="text" id="formControlLg" class="form-control form-control-lg" name="name" value="{{ $item->name }}"/>
                                 </div>
                                 <br>
