@@ -73,6 +73,15 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         <h4>フォームにご登録のメールアドレスを<br>ご入力ください。</h4>
                                         <form action="{{ route('delete-account')}}" method="POST">
                                             @csrf
