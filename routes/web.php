@@ -9,6 +9,8 @@ Route::get('/', [LogController::class, 'get_home'])->name('home')->middleware('a
 //     return view('auth.login');
 // });
 
+Route::get('/toppage', [UserController::class, 'toppage']);
+
 Route::post('/', [LogController::class, 'home_post'])->name('home-post');
 
 Route::post('/comment/{searchDay}', [LogController::class, 'get_comment']);

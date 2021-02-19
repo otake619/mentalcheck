@@ -79,4 +79,10 @@ class UserController extends Controller
             return view('mentalcheckapp.delete_form');
         }
     }
+
+    //トップページを返す
+    public function toppage()
+    {
+        return view('mentalcheckapp.toppage');
+    }
 }
