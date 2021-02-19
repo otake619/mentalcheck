@@ -30,7 +30,7 @@
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">トップページ</a>
+                    <a class="nav-link" href="#">TOP</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">ログイン</a>
@@ -46,12 +46,26 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <img src="{{ }}" alt="">
-                    <p>a</p>
+                <div class="col-12 col-lg-6 mt-3">
+                    <img src="{{ asset('images/heart.jpg') }}" alt="トップページの画像" class="rounded-pill mw-100">
                 </div>
-                <div class="col-12 col-md-6">
-                    <img src="{{ asset('/public/images/heart.jpg') }}" alt="">
+                <div class="col-12 col-lg-6 mt-5 text-center">
+                    <h4 class="text-primary">メンタルチェックアプリへようこそ！</h4>
+                    <p class="text-info mt-5">メンタルチェックアプリは、精神的に不調を抱える人のための<br>メンタル記録アプリです。</p>
+                    <p class="text-info">このアプリの製作者も精神的な不調を抱えています。</p>
+                    <p class="text-info">このアプリを活用して、不調の波を把握しましょう！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="buttons">
+        <div class="container-fluid">
+            <div class="row text-center mt-5">
+                <div class="col-12 col-lg-6">
+                    <a href="{{ route('register') }}" class="col btn btn-info">新規アカウント作成</a>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <a href="{{ route('login') }}" class="col btn btn-primary mb-5">ログイン</a>
                 </div>
             </div>
         </div>
