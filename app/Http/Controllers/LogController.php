@@ -41,10 +41,15 @@ class LogController extends Controller
     //ログをデータベースに格納
     public function store(Request $request)
     {
+        //bool値でのバリデーションがうまくいかなかったので、別途実装
+        $medicine_check = $request->input('medicine_check');
+        if($medicine_check !== "0" || $medicine_check !== "1"){
+            redirect('/home');
+        }
         //バリデーション。入力値がルールに沿っているかチェック。
         $validator = $request->validate([
             'mental_point' => 'required|between:1,5|numeric',
-            'medicine_check' => 'required|boolean',
+            'medicine_check' => 'required',
             'comment' => 'required|max:200',
         ]);
 
