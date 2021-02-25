@@ -33,10 +33,10 @@
                     <a class="nav-link" href="#">TOP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">ログイン</a>
+                    <a class="nav-link" href="{{ route('login-view') }}">ログイン</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">新規アカウント作成</a>
+                    <a class="nav-link" href="{{ route('register-view') }}">新規アカウント作成</a>
                 </li>
             </ul>
         </div>
@@ -62,10 +62,10 @@
         <div class="container-fluid">
             <div class="row text-center mt-5">
                 <div class="col-12 col-lg-6">
-                    <a href="{{ route('register') }}" class="col btn btn-info">新規アカウント作成</a>
+                    <a href="{{ route('register-view') }}" class="col btn btn-info">新規アカウント作成</a>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <a href="{{ route('login') }}" class="col btn btn-primary mb-5">ログイン</a>
+                    <a href="{{ route('login-view') }}" class="col btn btn-primary mb-5">ログイン</a>
                 </div>
             </div>
         </div>

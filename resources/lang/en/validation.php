@@ -152,6 +152,8 @@ return [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'name' => 'ユーザー名',
+        'medicine_check' => '服薬チェック',
+        'mental_point' => '精神状態',
     ],
 
 ];

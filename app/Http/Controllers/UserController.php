@@ -12,6 +12,7 @@ class UserController extends Controller
 
     public function __construct(User $user)
     {
+        $this->middleware('auth');
         $this->user = $user;
     }
 
@@ -20,6 +21,7 @@ class UserController extends Controller
     {
         return view('mentalcheckapp.logout');
     }
+
     //ログアウト処理
     public function logout(Request $request)
     {
@@ -55,11 +57,8 @@ class UserController extends Controller
             compact('user_info', 'is_posted'));
     }
 
-    public function get_delete()
-    {
-        return view('mentalcheckapp.delete_form');
-    }
-
+    //退会処理。
+    //入力されたメールアドレスが誤っていた場合、フォームへリダイレクト。
     public function delete_account(Request $request)
     {
         $request->validate([
@@ -78,11 +77,5 @@ class UserController extends Controller
             //TODO バリデーションを行う
             return view('mentalcheckapp.delete_form');
         }
-    }
-
-    //トップページを返す
-    public function toppage()
-    {
-        return view('mentalcheckapp.toppage');
     }
 }

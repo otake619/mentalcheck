@@ -70,16 +70,16 @@
                     locale: 'ja',
                     dateClick: function(info) {
                         console.log(info.dateStr);
-                        window.location.href = "/comment/" + info.dateStr;
+                        window.location.href = "/select-day/" + info.dateStr;
                 },
 
             });
 
-            let dateArray = getMedicineDay();
+            let dateArray = takeMedicineDay();
             for(let index=0;index<dateArray.length;index++){
                 calendar.addEvent({
                     id: index,
-                    title: "記録あり",
+                    title: "服薬あり",
                     start: dateArray[index],
                 });
             }
@@ -87,7 +87,7 @@
             calendar.render();
         });
 
-        function getMedicineDay(){
+        function takeMedicineDay(){
             //ログがあった日のマス目の色を変える
             let logs = @json($logs);
             let dateArray = [];

@@ -42,7 +42,7 @@
                     <a class="nav-link" href="{{ route('account-info') }}">アカウント情報</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('get-delete') }}">退会</a>
+                    <a class="nav-link" href="{{ route('display-delete') }}">退会</a>
                 </li>
             </ul>
         </div>

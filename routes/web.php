@@ -4,39 +4,40 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', [LogController::class, 'get_home'])->name('home')->middleware('auth');
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
+//ログイン前のトップページへ遷移
+Route::get('/', function() {
+    return view('mentalcheckapp.toppage');
+});
+//ホーム画面へ遷移
+Route::get('/home', [LogController::class, 'get_home'])->name('home');
+//ホーム画面でログをPOST
+Route::post('/home', [LogController::class, 'log_post'])->name('log-post');
+//トップページでログイン画面を返す
+Route::get('/login-view', function() {
+    return view('auth.login');
+})->name('login-view');
+//トップページで新規登録画面を返す
+Route::get('/register-view', function() {
+    return view('auth.register');
+})->name('register-view');
 
-Route::get('/toppage', [UserController::class, 'toppage']);
-
-Route::post('/', [LogController::class, 'home_post'])->name('home-post');
-
-Route::post('/comment/{searchDay}', [LogController::class, 'get_comment']);
-Route::get('/comment/{searchDay}', [LogController::class, 'get_logs'])->name('get-logs');
-
-Route::get('/calendar', [LogController::class, 'get_calendar'])->name('calendar');
-// Route::post('/calendar/{sendDay}', [LogController::class, 'get_calendar']);
-
+//選択した日にちのログを返す
+Route::get('/select-day/{searchDay}', [LogController::class, 'display_logs'])->name('display-logs');
+//カレンダー画面を返す
+Route::get('/calendar', [LogController::class, 'display_calendar'])->name('calendar');
+//ログに関するルーティング
 Route::prefix('log')->group(function(){
     //不調理由をデータベースに保存
     Route::post('store', [LogController::class, 'store'])->name('store-data');
-    //不調理由をデータベースに保存
-    Route::get('store', [LogController::class, 'store'])->name('store');
     //ログを編集・更新
     Route::post('update', [LogController::class, 'update'])->name('update');
-    //ログを編集・更新
-    Route::post('ajax-info', [LogController::class, 'ajax_info'])->name('ajax-info');
 });
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    [UserController::class, 'login'];
-})->name('dashboard');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
+
+//アカウント、および認証に関するルーティング
 Route::prefix('user')->group(function(){
     //ログアウト画面に遷移
     Route::get('get-logout', [UserController::class, 'get_logout'])->name('get-logout');
@@ -45,7 +46,9 @@ Route::prefix('user')->group(function(){
     //アカウント情報を表示
     Route::get('account-info', [UserController::class, 'get_account_info'])->name('account-info');
     //アカウント削除画面を表示
-    Route::get('get-delete', [UserController::class, 'get_delete'])->name('get-delete');
+    Route::get('display-delete', function() {
+        return view('mentalcheckapp.delete_form');
+    })->name('display-delete');
     //アカウントを更新
     Route::post('update', [UserController::class, 'update'])->name('update-account');
     //アカウントを削除
